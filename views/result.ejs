@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles\result.css">
+  <link rel="stylesheet" href="Public\styles\scrollbarStyle.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+<style>
+        .card{
+            width:1200px;
+            margin:10px;
+            margin-top:20px;
+            background:url("Designer\ \(21\).png");
+        }
+
+        .card-title{
+            font-family:"Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size:30px;
+        }
+        .card-text{
+            font-family: "Playfair Display", serif;
+
+        }
+        .text{
+            font-family: "Playfair Display", serif;
+        }
+        .card li{
+            font-family: "Playfair Display", serif;
+        }
+        
+    </style>
+</head>
+
+<body>
+  <main>
+    <div class="section__wrapper">
+      <div class="section__container">
+
+        <section class="header">
+          <img src="../images/trophy.svg" alt="" class="header__icon">
+          <h1 class="header__title"><span class="header__title--top">PERMA</span><span
+              class="header__title--bottom">Scores</span>
+            <br>
+            <span class="header__title--bottom">Check Your Email</span>
+          </h1>
+        </section>
+
+        <section class="score-board">
+
+          <article class="score-card">
+            <p class="circle" id="P">P</p>
+            <span class="score-card__title">Positive Emotions</span>
+            <span class="score-card__value">
+              <%= pos %>
+                <% if (pos < 5) { %>
+                  <span class="emoji">&#128532;</span> <!-- sad emoji -->
+                  <% } else { %>
+                    <span class="emoji">&#128522;</span> <!-- happy emoji -->
+                    <% } %>
+            </span>
+          </article>
+
+          <article class="score-card">
+            <p class="circle" id="E">E</p>
+            <span class="score-card__title">Engagement</span>
+            <span class="score-card__value">
+              <%= eng %>
+                <% if (eng < 4) { %>
+                  <span class="emoji">&#128241;</span> <!-- 📱 -->
+                  <% } else { %>
+                    <span class="emoji">&#127912;</span> <!-- 🎨 -->
+                    <!-- <span class="emoji">&#127947;&#8205;&#9794;&#65039;</span>  -->
+                    <% } %>
+            </span>
+          </article>
+
+          <article class="score-card">
+            <p class="circle" id="R">R</p>
+            <span class="score-card__title">Relationships</span>
+            <span class="score-card__value">
+              <%= rel %>
+                <% if (rel < 5) { %>
+                  <span class="emoji">&#128694;</span> <!-- 🚶‍♂️ -->
+                  <% } else { %>
+                    <span class="emoji">&#10084;</span> <!-- ❤️ -->
+                    <% } %>
+            </span>
+          </article>
+
+          <article class="score-card">
+            <p class="circle" id="M">M</p>
+            <span class="score-card__title">Meaning</span>
+            <span class="score-card__value">
+              <%= mea %>
+                <% if (rel < 5) { %>
+                  <span class="emoji">&#128694;</span> <!-- 🚶‍♂️ -->
+                  <% } else { %>
+                    <span class="emoji">&#10084;</span> <!-- ❤️ -->
+                    <% } %>
+            </span>
+          </article>
+
+          <article class="score-card">
+            <p class="circle" id="A">A</p>
+            <span class="score-card__title">Accomplishment</span>
+            <span class="score-card__value">
+              <%= acc %>
+                <% if (acc < 5) { %>
+                  <span class="emoji">&#x1F61E;</span> <!-- 😞 -->
+                  <% } else { %>
+                    <span class="emoji">&#x1F3C6;</span> <!-- 🏆 -->
+                    <% } %>
+            </span>
+
+          </article>
+
+        </section>
+      </div>
+      <button class="btn-grad" onclick="window.location.href='/';">Try Again <i
+          class="fa-solid fa-arrow-rotate-right"></i></button>
+      <button class="btn-grad" id="share-now-button">Share Now <i class="fa-solid fa-share"></i></button>
+    </div>
+
+<!--section describing the meaning of P-E-R-M-A-->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"> Understanding Positive Emotion</h4>
+            <p class="card-text">
+                Positive emotions are crucial for overall well-being, mental health, and quality of life. They encompass
+                a range of feelings, from happiness and joy to contentment and gratitude. Here’s a closer look at what
+                positive emotions are, their benefits, and how to cultivate them.</p>
+                <h5>What Are Positive Emotions?</h5>
+            <p class="text">
+            
+            Positive emotions are feelings that uplift and energize us. They are essential for creating a balanced
+                and fulfilling life. Common positive emotions include:
+            <ul>
+                <li>Happiness: A state of well-being and contentment.</li>
+                <li>Joy: A feeling of great pleasure and delight.</li>
+                <li>Gratitude: Appreciating what you have and recognizing the good in your life.</li>
+                <li>Love: Deep affection and care for others.</li>
+                <li>Hope: Looking forward to the future with optimism.</li>
+                <li>Pride: Satisfaction derived from achievements or qualities.</li>
+                <li>Amusement: Enjoyment of entertaining and funny moments.</li>
+                <li>Awe: Wonder and amazement, often in response to nature or art.</li>
+            </ul>
+            </p>
+
+        </div>
+    </div>
+
+    <div class="card ">
+        <div class="card-body">
+            <h4 class="card-title">Understanding Engagement</h4>
+            <p class="card-text"> Engagement refers to a state of deep involvement and interest in an activity, task, or
+                relationship. It is characterized by full immersion and focused attention, often leading to a sense of
+                fulfillment and satisfaction. Here’s an insight into what engagement is, its benefits, and how to foster
+                it.</p>
+                <h5>What Is Engagement?</h5>
+            <p class="text">
+            
+            Engagement is an emotional and mental state where an individual is fully absorbed and enthusiastic about
+                what they are doing. This state is often referred to as "flow," a term coined by psychologist Mihaly
+                Csikszentmihalyi. Key aspects of engagement include:
+            <ul>
+                <li>Focus: Intense concentration on the present moment and the task at hand.</li>
+                <li>Interest: A genuine curiosity and enthusiasm for the activity.</li>
+                <li>Challenge: A balance between the difficulty of the task and the individual's skill level, creating
+                    an optimal challenge.</li>
+                <li>Absorption: Losing track of time and being completely immersed in the activity.
+                </li>
+            </ul>
+            </p>
+
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Understanding Relationship</h4>
+            <p class="card-text"> Relationships are the connections and interactions we have with others, ranging from
+                family and friends to colleagues and romantic partners. These bonds are fundamental to our emotional
+                well-being, providing support, companionship, and a sense of belonging. Here’s a deeper look at what
+                relationships are, their importance, and how to nurture them.</p>
+                <h5>What Is Relationship?</h5>
+            <p class="text">
+            
+            Relationships are associations between two or more people based on emotional connections, shared
+                experiences, and mutual interests. They can be classified into different types, including:
+            <ul>
+                <li>Family Relationships: Bonds with parents, siblings, and other relatives.</li>
+                <li>Friendships: Voluntary connections based on mutual affection and common interests.</li>
+                <li>Romantic Relationships: Deep emotional and physical connections with a partner.</li>
+                <li>Professional Relationships: Interactions with colleagues, mentors, and business associates.</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Understanding Meaning </h4>
+            <p class="card-text">Meaning is a fundamental concept that refers to the significance, purpose, or value we attach to our experiences, actions, and existence. It is the sense of direction and fulfillment we derive from understanding our place in the world and the impact we have on it. Here’s a deeper look at what meaning is, its importance, and how to cultivate it.</p>
+            <h5>What Is Meaning?</h5>
+            <p class="text">
+            
+            Meaning encompasses the reasons behind why we do what we do, and how we interpret our lives and experiences. It can be broken down into several key aspects:
+            <ul>
+                <li>Purpose: The overarching goals and aspirations that give our lives direction.</li>
+                <li>Significance: The importance or value we assign to our actions, relationships, and experiences.</li>
+                <li>Coherence: The sense of understanding and clarity about how different aspects of our lives fit together.</li>
+                <li>Personal Achievements: Accomplishments that align with our values and goals.</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Understanding Accomplishment</h4>
+            <p class="card-text">Accomplishment refers to the sense of achievement and satisfaction that comes from completing tasks, reaching goals, and realizing aspirations. It is a critical component of personal and professional development, contributing to our self-esteem and overall well-being. Here’s a deeper look at what accomplishment is, its importance, and how to cultivate it.</p>
+            <h5>What Is Accomplishment?</h5>
+            <p class="text">
+            
+            Accomplishment involves the successful completion of goals or tasks that we set for ourselves. These can range from small daily achievements to significant life milestones. Key aspects of accomplishment include:
+            <ul>
+                <li>Goal Setting: Identifying clear, attainable objectives.</li>
+                <li></li>
+                <li>Effort and Persistence: Putting in the necessary effort and staying persistent despite challenges.</li>
+                <li>Success: Achieving the desired outcome or making significant progress towards it.</li>
+                <li>Recognition: Acknowledging and celebrating the achievement, whether personally or through external validation.</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <section class=" recommended-resources">
+      <h2>Recommended Resources</h2>
+      <div class="resource-list">
+        <% if (pos < 5) { %>
+          <article class="resource-card">
+            <h3>Boosting Positivity</h3>
+            <p>Feeling down? Check out these tips for increasing positive emotions.</p>
+            <a href="https://greatergood.berkeley.edu/article/science/what/happiness/how-increase-your-happiness"
+              target="_blank">Visit Resource</a>
+          </article>
+          <% } else if (pos>= 5 && pos <= 7) { %>
+              <article class="resource-card">
+                <h3>Maintaining Positivity</h3>
+                <p>Strategies to keep your positive emotions thriving.</p>
+                <a href="https://www.psychologytoday.com/us/blog/the-athletes-way/201701/9-ways-cultivate-and-maintain-positive-emotions"
+                  target="_blank">Visit Resource</a>
+              </article>
+              <% } else { %>
+                <article class="resource-card">
+                  <h3>Enhancing Positivity</h3>
+                  <p>Take your positive emotions to the next level with these practices.</p>
+                  <a href="https://www.headspace.com/science/happiness" target="_blank">Visit Resource</a>
+                </article>
+                <% } %>
+
+                  <% if (eng < 5) { %>
+                    <article class="resource-card">
+                      <h3>Spark Engagement</h3>
+                      <p>Feeling disengaged? Explore these tips to find activities that light you up.</p>
+                      <a href="https://www.helpguide.org/articles/mental-health/finding-purpose-and-meaning-in-life.htm"
+                        target="_blank">Visit Resource</a>
+                    </article>
+                    <% } else if (eng>= 5 && eng <= 7) { %>
+                        <article class="resource-card">
+                          <h3>Deepen Engagement</h3>
+                          <p>Take your engagement to the next level with these strategies.</p>
+                          <a href="https://positivepsychology.com/engagement-activities/" target="_blank">Visit
+                            Resource</a>
+                        </article>
+                        <% } else { %>
+                          <article class="resource-card">
+                            <h3>Supercharge Engagement</h3>
+                            <p>Learn how to maximize your flow and motivation.</p>
+                            <a href="https://www.ted.com/talks/mihaly_csikszentmihalyi_on_flow_the_secret_to_happiness"
+                              target="_blank">Visit Resource</a>
+                          </article>
+                          <% } %>
+
+                            <% if (rel < 5) { %>
+                              <article class="resource-card">
+                                <h3>Strengthen Relationships</h3>
+                                <p>Build stronger connections with these tips for fostering healthy relationships.</p>
+                                <a href="https://www.gottman.com/blog/the-four-horsemen-communication-apocalypse/"
+                                  target="_blank">Visit Resource</a>
+                              </article>
+                              <% } else if (rel>= 5 && rel <= 7) { %>
+                                  <article class="resource-card">
+                                    <h3>Nurture Relationships</h3>
+                                    <p>Learn how to nurture and deepen your existing connections.</p>
+                                    <a href="https://www.psychologytoday.com/us/blog/the-athletes-way/201801/6-ways-nurture-your-relationships"
+                                      target="_blank">Visit Resource</a>
+                                  </article>
+                                  <% } else { %>
+                                    <article class="resource-card">
+                                      <h3>Thriving Relationships</h3>
+                                      <p>Explore advanced strategies for building strong and fulfilling relationships.
+                                      </p>
+                                      <a href="https://www.gottman.com/blog/what-makes-love-last-2/"
+                                        target="_blank">Visit Resource</a>
+                                    </article>
+                                    <% } %>
+
+                                      <% if (mea < 5) { %>
+                                        <article class="resource-card">
+                                          <h3>Discover Meaning</h3>
+                                          <p>Feeling lost? Explore resources to help you find your purpose in life.
+                                          </p>
+                                          <a href="https://www.verywellmind.com/how-to-find-meaning-in-life-4160866"
+                                            target="_blank">Visit Resource</a>
+                                        </article>
+                                        <% } else if (mea>= 5 && mea <= 7) { %>
+                                            <article class="resource-card">
+                                              <h3>Live a Meaningful Life</h3>
+                                              <p>Learn how to integrate meaning into your daily life.</p>
+                                              <a href="https://www.berkeley.edu/greatergood/science/purpose/what-gives-life-meaning"
+                                                target="_blank">Visit Resource</a>
+                                            </article>
+                                            <% } else { %>
+                                              <article class="resource-card">
+                                                <h3>Expand Your Purpose</h3>
+                                                <p>Explore ways to broaden your sense of purpose and make a bigger
+                                                  impact.</p>
+                                                <a href="https://greatergood.berkeley.edu/article/science/well-being/how-find-your-lifes-purpose"
+                                                  target="_blank">Visit Resource</a>
+                                              </article>
+                                              <% } %>
+
+                                                <% if (acc < 5) { %>
+                                                  <article class="resource-card">
+                                                    <h3>Boost Accomplishment</h3>
+                                                    <p>Feeling stuck? Discover strategies to set and achieve goals
+                                                      effectively.</p>
+                                                    <a href="https://jamesclear.com/articles/goal-setting/"
+                                                      target="_blank">Visit Resource</a>
+                                                  </article>
+                                                  <% } else if (acc>= 5 && acc <= 7) { %>
+                                                      <article class="resource-card">
+                                                        <h3>Maximize Accomplishment</h3>
+                                                        <p>Take your goal-setting skills to the next level with
+                                                          advanced strategies.</p>
+                                                        <a href="https://www.forbes.com/sites/forbescoachescouncil/2019/01/14/10-powerful-goal-setting-tips-for-maximum-achievement/"
+                                                          target="_blank">Visit Resource</a>
+                                                      </article>
+                                                      <% } else { %>
+                                                        <article class="resource-card">
+                                                          <h3>Breakthrough Accomplishment</h3>
+                                                          <p>Explore strategies for tackling ambitious goals and
+                                                            achieving peak performance.</p>
+                                                          <a href="https://www.entrepreneur.com/article/273150"
+                                                            target="_blank">Visit Resource</a>
+                                                        </article>
+                                                        <% } %>
+      </div>
+    </section>
+
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span id="close-btn">&times;</span>
+        <p id="popup-content-heading">Download your PERMA score!!</p>
+        <hr>
+        <div id="img-container"></div>
+        <hr>
+        <div id="share-btns">
+          <i class="fa-solid fa-download" title="Download" id="download-btn"></i>
+          <i class="fa-solid fa-share-nodes" title="Share" id="share-btn"></i>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+
+    const shareNowBtn = document.querySelector("#share-now-button");
+    const closeBtn = document.querySelector("#close-btn");
+    const popup = document.getElementById('popup');
+    const imgContainer = document.querySelector('#img-container');
+    const downloadBtn = document.querySelector('#download-btn');
+    const shareBtn = document.getElementById("share-btn");
+
+    const convertDivToPNG = async () => {
+      const node = document.querySelector(".section__container");
+      const dataUrl = await domtoimage.toPng(node);
+      const response = await fetch(dataUrl);
+      const blob = await response.blob();
+      return new File([blob], 'PERMA_Scores.png', { type: 'image/png' });
+    }
+
+
+    shareNowBtn.addEventListener('click', () => {
+      convertDivToPNG().then(file => {
+        popup.style.display = 'block';
+        if (imgContainer.firstChild) imgContainer.removeChild(imgContainer.firstChild);
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.style.width = '40%';
+        img.style.height = '100%';
+        img.style.repeat = 'no-repeat';
+        imgContainer.appendChild(img);
+        
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          shareBtn.style.display = "block";
+          shareBtn.addEventListener('click', () => {
+            navigator.share({
+              title: 'Perma Scores',
+              text: 'Check out my PERMA Scores!',
+              files: [file]
+            }).then(() => {
+              console.log('Thanks for sharing!');
+            }).catch((error) => {
+              console.error('Error sharing:', error);
+            });
+          });
+        }
+        else {
+          shareBtn.style.display = "none";
+        }
+      }).catch(error => {
+        console.error('oops, something went wrong!', error);
+      });
+    });
+
+    closeBtn.addEventListener('click', () => popup.style.display = 'none');
+
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+
+
+    downloadBtn.addEventListener('click', () => {
+      const img = imgContainer.querySelector('img');
+      if (!img) return;
+
+      const imgUrl = img.src;
+      const link = document.createElement('a');
+      link.href = imgUrl;
+      link.download = 'PERMA_Scores.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+    integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
